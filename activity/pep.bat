@@ -1,0 +1,1 @@
+node tpp.js treefy "C:\Users\LENOVO\Desktop\DEV\Writing Command Lines\Raw\xyz" "C:\Users\LENOVO\Desktop\DEV\Writing Command Lines\Raw\dest"
