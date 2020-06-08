@@ -1,5 +1,20 @@
 let fs = require("fs");
 
+//src -t
+//src -f
+module.exports.view = function () {
+
+    let src= arguments[0];
+    let mode= arguments[1];
+    if(mode== "-t") {
+        viewAsTree(src, "");
+    } else if(mode== "-f") {
+        viewAsFlatFiles(src, path.basename(src));
+    } else {
+        console.log("Enter correct mode");
+    }
+}
+
 let path = require("path");
 function checkWhetherFile(src) {
     return fs.lstatSync(src).isFile();
@@ -41,11 +56,8 @@ function viewAsTree(src, indent) {
         //console.log(childNames);
         for(let i=0;i < childNames.length;i++) {
             let childPath = path.join(src, childNames[i]);
-            viewAsFlatFiles(childPath, indent + "__");
+            viewAsTree(childPath, indent + " ");
         }
     }
  }
-
- let src = process.argv[2];
-// viewAsFlatFiles(src, path.basename(src));
-viewAsTree(src, "");
+ 
